@@ -8,20 +8,31 @@ part 'movie_event.dart';
 part 'movie_state.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
-  ApiProvider _apiProvider = ApiProvider();
   MovieBloc() : super(MovieInitial());
 
   @override
   Stream<MovieState> mapEventToState(MovieEvent event) async* {
     if (event is MovieEventStart) {
-      try {
-        yield MovieLoading();
-        List<Movie> movieList = await _apiProvider.getNowPlaying();
-        yield MovieLoaded(movieList);
-        print('data di moviebloc ' + movieList.length.toString());
-      } catch (e) {
-        print('error di moviebloc $e');
+      yield* _mapMovieEventStateToState(event.movieId, event.query);
+    }
+  }
+
+  Stream<MovieState> _mapMovieEventStateToState(
+      int movieId, String query) async* {
+    final service = ApiProvider();
+    yield MovieLoading();
+    try {
+      List<Movie> movieList;
+      if (movieId == 0) {
+        movieList = await service.getNowPlaying();
+      } else {
+        movieList = await service.getMovieGenre(movieId);
       }
+
+      yield MovieLoaded(movieList);
+    } on Exception catch (e) {
+      print(e);
+      
     }
   }
 }

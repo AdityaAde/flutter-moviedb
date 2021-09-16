@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_moviedb/bloc/moviebloc/movie_bloc.dart';
 import 'package:flutter_moviedb/models/movie.dart';
+import 'package:flutter_moviedb/widgets/category.dart';
 import 'package:flutter_moviedb/widgets/loading.dart';
 
 class GetNowPlay extends StatefulWidget {
@@ -27,19 +28,6 @@ class _GetNowPlayState extends State<GetNowPlay> {
         BlocProvider<MovieBloc>(create: (_) => _movieBloc),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Text(
-            'Movies-db'.toUpperCase(),
-            style: Theme.of(context).textTheme.caption.copyWith(
-                  color: Colors.black45,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          centerTitle: true,
-        ),
         body: _movieList(context),
       ),
     );
@@ -125,6 +113,10 @@ class _GetNowPlayState extends State<GetNowPlay> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
+                                SizedBox(
+                                  height: 12,
+                                ),
+                                Category(),
                                 SizedBox(
                                   height: 12,
                                 ),
