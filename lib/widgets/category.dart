@@ -7,6 +7,8 @@ import 'package:flutter_moviedb/models/genre.dart';
 import 'package:flutter_moviedb/models/movie.dart';
 import 'package:flutter_moviedb/widgets/loading.dart';
 
+import 'movie_detail.dart';
+
 class Category extends StatefulWidget {
   final int selectefGenre;
 
@@ -159,7 +161,11 @@ class _CategoryState extends State<Category> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MovieDetailScreen(movie: movie);
+                  }));
+                },
                 child: ClipRRect(
                   child: CachedNetworkImage(
                     imageUrl:

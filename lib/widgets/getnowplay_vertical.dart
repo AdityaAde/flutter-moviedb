@@ -7,6 +7,8 @@ import 'package:flutter_moviedb/bloc/moviebloc/movie_bloc.dart';
 import 'package:flutter_moviedb/models/movie.dart';
 import 'package:flutter_moviedb/widgets/category.dart';
 import 'package:flutter_moviedb/widgets/loading.dart';
+import 'package:flutter_moviedb/widgets/movie_detail.dart';
+import 'package:flutter_moviedb/widgets/trending_person.dart';
 
 class GetNowPlay extends StatefulWidget {
   @override
@@ -58,7 +60,12 @@ class _GetNowPlayState extends State<GetNowPlay> {
                             itemBuilder: (BuildContext context, int index) {
                               Movie movie = movies[index];
                               return GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return MovieDetailScreen(movie: movie);
+                                  }));
+                                },
                                 child: Stack(
                                   alignment: Alignment.bottomLeft,
                                   children: <Widget>[
@@ -113,13 +120,19 @@ class _GetNowPlayState extends State<GetNowPlay> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                SizedBox(
-                                  height: 12,
-                                ),
+                                SizedBox(height: 12),
                                 Category(),
-                                SizedBox(
-                                  height: 12,
+                                SizedBox(height: 12),
+                                Text(
+                                  'Trending persons on this week'.toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black45,
+                                  ),
                                 ),
+                                SizedBox(height: 12),
+                                TrendingPerson(),
                               ],
                             ),
                           ),
