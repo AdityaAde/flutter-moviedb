@@ -62,7 +62,6 @@ class _CategoryState extends State<Category> {
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: Colors.black45,
-                fontFamily: 'muli',
               ),
             ),
           ),
@@ -130,7 +129,6 @@ class _CategoryState extends State<Category> {
                           color: (genre.id == selectedGenre)
                               ? Colors.white
                               : Colors.black45,
-                          fontFamily: 'muli',
                         ),
                       ),
                     ),
@@ -204,7 +202,6 @@ class _CategoryState extends State<Category> {
                     fontSize: 12,
                     color: Colors.black45,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'muli',
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
