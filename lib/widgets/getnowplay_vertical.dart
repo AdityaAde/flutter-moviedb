@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_moviedb/bloc/moviebloc/movie_bloc.dart';
@@ -61,8 +60,7 @@ class _GetNowPlayState extends State<GetNowPlay> {
                               Movie movie = movies[index];
                               return GestureDetector(
                                 onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) {
                                     return MovieDetailScreen(movie: movie);
                                   }));
                                 },
@@ -71,19 +69,13 @@ class _GetNowPlayState extends State<GetNowPlay> {
                                   children: <Widget>[
                                     ClipRRect(
                                       child: CachedNetworkImage(
-                                        imageUrl:
-                                            'https://image.tmdb.org/t/p/original/${movie.backdropPath}',
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                3,
-                                        width:
-                                            MediaQuery.of(context).size.width,
+                                        imageUrl: 'https://image.tmdb.org/t/p/original/${movie.backdropPath}',
+                                        height: MediaQuery.of(context).size.height / 3,
+                                        width: MediaQuery.of(context).size.width,
                                         fit: BoxFit.cover,
-                                        placeholder: (context, url) =>
-                                            isLoading(),
+                                        placeholder: (context, url) => isLoading(),
                                       ),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
+                                      borderRadius: BorderRadius.all(Radius.circular(10)),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(
@@ -108,8 +100,7 @@ class _GetNowPlayState extends State<GetNowPlay> {
                               enableInfiniteScroll: true,
                               autoPlay: true,
                               autoPlayInterval: Duration(seconds: 5),
-                              autoPlayAnimationDuration:
-                                  Duration(milliseconds: 800),
+                              autoPlayAnimationDuration: Duration(milliseconds: 800),
                               pauseAutoPlayOnTouch: true,
                               viewportFraction: 0.8,
                               enlargeCenterPage: true,
@@ -120,19 +111,8 @@ class _GetNowPlayState extends State<GetNowPlay> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                SizedBox(height: 12),
+                                SizedBox(height: 50),
                                 Category(),
-                                SizedBox(height: 12),
-                                Text(
-                                  'Trending persons on this week'.toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                                SizedBox(height: 12),
-                                TrendingPerson(),
                               ],
                             ),
                           ),

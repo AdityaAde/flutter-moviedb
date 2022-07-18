@@ -43,17 +43,8 @@ class TrendingPerson extends StatelessWidget {
                               borderRadius: BorderRadius.circular(100),
                             ),
                             elevation: 5,
-                            child:
-                                /* ClipRRect(
-                                child: Container(
-                              height: 70,
-                              width: 50,
-                              child: Image.network(
-                                  'https://image.tmdb.org/t/p/w200${person.profilePath}'),
-                            ) */
-                                CachedNetworkImage(
-                              imageUrl:
-                                  'https://image.tmdb.org/t/p/w200${person.profilePath}',
+                            child: CachedNetworkImage(
+                              imageUrl: 'https://image.tmdb.org/t/p/w200${person.profilePath}',
                               imageBuilder: (context, imageProvider) {
                                 return Container(
                                   height: 70,
@@ -62,9 +53,7 @@ class TrendingPerson extends StatelessWidget {
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(100),
                                     ),
-                                    image: DecorationImage(
-                                        image: imageProvider,
-                                        fit: BoxFit.cover),
+                                    image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
                                   ),
                                 );
                               },
